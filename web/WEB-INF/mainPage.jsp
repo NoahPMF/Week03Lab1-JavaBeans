@@ -15,7 +15,7 @@
     <body>
         <h1>Welcome!</h1>
         <div>
-            
+            hello, ${User.username}. <a href="${pageContext.request.contextPath}/MainPage">Logout</a>
         </div>
     </body>
 </html>

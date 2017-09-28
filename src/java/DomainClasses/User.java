@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 package DomainClasses;
-
+import java.io.Serializable;
 /**
  *
  * @author NoahFerrier
  */
-public class User {
+public class User implements Serializable {
     
     private String username;
     private String password;

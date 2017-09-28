@@ -22,7 +22,7 @@ public class MainPageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                request.setAttribute("message", "successfully logged out");
+                request.setAttribute("message", true);
               getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
     }
 

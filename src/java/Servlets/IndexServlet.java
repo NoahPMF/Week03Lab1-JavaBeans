@@ -34,20 +34,24 @@ public class IndexServlet extends HttpServlet {
         username = username.toLowerCase();
         password = password.toLowerCase();
 
+        request.setAttribute("username", username);
+        request.setAttribute("password", password);
+
         userService us = new userService();
-        User u = new User();
+        User u = new User(username,password);
 
         if (username.trim().isEmpty() && password.trim().isEmpty()) {
-            request.setAttribute("error1", true);
-            getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+            request.setAttribute("error1", false);
+            getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
         } else if (!us.login(username, password)) {
-            request.setAttribute("error2", true);
-            getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+            request.setAttribute("error2", false);
+            getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
         } else {
             u.setUsername(username);
             u.setPassword(password);
+            request.setAttribute("User", u);
             getServletContext().getRequestDispatcher("/WEB-INF/mainPage.jsp").forward(request, response);
         }
-    }
 
+    }
 }
